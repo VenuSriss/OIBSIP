@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Textbox Value Display</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <section>
+      <h2>Temperature Converter</h2>
+      <div>
+        <h3>Select the type</h3>
+        <select id="conversionType">
+            <option value="c-f">Celsius to Fahrenheit</option>
+            <option value="f-c">Fahrenheit to Celsius</option>
+          </select>
+        <h3>Enter the value</h3>
+        <input type="number" id="inputText" placeholder="Enter a value" /><br />
+        <button onclick="myFunction()">Convert</button>
+        <h4 id="displayValue"></h4>
+      </div>
+    </section>
+
+    <script>
+      function myFunction() {
+        var conversionType = document.getElementById("conversionType").value;
+        var selectvalue = document.getElementById("conversionType").options[
+          document.getElementById("conversionType").selectedIndex
+        ].text;
+   
+        var inputValue = document.getElementById("inputText").value;
+        var displayElement = document.getElementById("displayValue");
+
+        if (conversionType === "c-f") {
+          var celsius = parseFloat(inputValue);
+          var fahrenheit = (celsius * 9) / 5 + 32;
+          displayElement.textContent =
+            "Celsius to Fahrenheit: " + fahrenheit + "°F";
+        } else if (conversionType === "f-c") {
+          var fahrenheit = parseFloat(inputValue);
+          var celsius = ((fahrenheit - 32) * 5) / 9;
+          displayElement.textContent =
+            "Fahrenheit to Celsius: " + celsius + "°C";
+        } else {
+          displayElement.textContent = "Please select a conversion type.";
+        }
+      }
+    </script>
+  </body>
+</html>
